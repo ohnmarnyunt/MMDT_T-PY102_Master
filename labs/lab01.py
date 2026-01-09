@@ -5,7 +5,7 @@ Covers:
 - LeetCode 206: Reverse Linked List
 - LeetCode 2816: Double a Number Represented as a Linked List
 
-Teaching format:
+Lab format:
 - Node classes are defined separately from LinkedList wrappers.
 
 Student instructions:
@@ -20,7 +20,7 @@ from typing import Optional, Iterable, List
 
 
 # ============================================================
-#  Node Definitions (separate from LinkedList wrappers)
+#  Node Definitions 
 # ============================================================
 
 @dataclass
@@ -31,11 +31,11 @@ class SNode:
 
 
 # ============================================================
-#  LinkedList Wrapper (for teaching/utility)
+#  LinkedList Wrapper 
 # ============================================================
 
 class SinglyLinkedList:
-    """Small wrapper for teaching/testing convenience."""
+    """Small wrapper for singly Linked List"""
     def __init__(self, head: Optional[SNode] = None):
         self.head = head
 
