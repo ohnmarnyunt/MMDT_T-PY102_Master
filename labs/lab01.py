@@ -59,7 +59,15 @@ def reverseList(head):
     Time: O(n), Space: O(1)
     """
     # TODO: Implement
-    raise NotImplementedError
+    prev = None
+    curr = head
+    
+    while curr is not None:
+        nxt = curr.next
+        curr.next = prev
+        prev = curr
+        curr = nxt
+    return prev
 
 def doubleIt(head):
     """
@@ -78,5 +86,37 @@ def doubleIt(head):
     """
 
     # TODO: Implement
-    raise NotImplementedError
+    head = reverseList(head)
+    
+    curr = head
+    prev = None
+    carry = 0
+    
+    while curr:
+        new_val = (curr.val * 2) + carry
+        curr.val = new_val % 10
+        carry = new_val // 10
+        
+        prev = curr
+        curr = curr.next
+        
+    if carry:
+        prev.next = Node(carry)
+        
+    return reverseList(head)
 
+
+list1 = SinglyLinkedList.from_list([5, 10, 15])
+reversed_head = reverseList(list1.head)
+result1 = SinglyLinkedList(reversed_head).to_list()
+print(f"Reserved Output: {result1}")
+
+list2 = SinglyLinkedList.from_list([1, 8, 9])
+doubled_head1 = doubleIt(list2.head)
+result2 = SinglyLinkedList(doubled_head1).to_list()
+print(f"[1, 8, 9] => Output: {result2}")
+
+list3 = SinglyLinkedList.from_list([9, 9, 9])
+doubled_head2 = doubleIt(list3.head)
+result3 = SinglyLinkedList(doubled_head2).to_list()
+print(f"[9, 9, 9] => Output: {result3}")
